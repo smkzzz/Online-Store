@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../static/images/fav.jpg" />
+
+    <title>{{ title  }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="h-screen bg-gradient-to-r text-white to-slate-800 from-gray-900 text-white">  
+        {%block content%}
+
+        {%endblock%}
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js">
+        
+    </script>
+
+
+<script>
+    // Attach an event listener to the button
+    function confirm(itemId){
+   
+
+// Display the Swal confirmation dialog with the dynamic value
+Swal.fire({
+    title: "Are you sure?",
+    text: "Are you sure you want to delete " + itemId + "?",
+    showCancelButton: true,
+   
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+    if (result.isConfirmed) {
+        // User clicked "Yes," perform the delete operation or show a success message
+       window.location.href ='/delete/'+itemId
+       
+    }
+});
+    }
+</script>
+{% for message in get_flashed_messages() %}
+<script>
+    Toastify({
+text: "{{message}}",
+className: "",
+position:'center',
+style: {
+background: "linear-gradient(to right, #6366F1, #EC4899)",
+}
+}).showToast();
+
+
+</script>
+{% endfor %}
+   
+  </body>
+</html>

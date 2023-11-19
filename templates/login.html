@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{%block content%}
+<div class=" h-full flex items-center justify-center">
+    
+    <div class="bg-gradient-to-l text-white to-slate-800 from-gray-900 rounded-lg p-10 w-[390px]">
+        <div class="flex flex-col items-center">
+            <h1 class="text-4xl font-bold">Login</h1>
+            <span></span>
+        </div>
+        <form action="/login" class="w-full mt-10 flex flex-col gap-3"method="post">
+            <div class="flex flex-col justify-between gap-2">
+                <label class="col-4" for="username">Username</label>
+                <input  value="{{username}}" placeholder="" autocomplete="off" class="bg-slate-700 p-2 rounded-lg text-slate-200" type="text" name="username"/>
+            </div>
+            <div class="flex flex-col justify-between gap-2">
+                <label class="col-4" for="username">Password</label>
+                <input value="{{password}}" placeholder="" autocomplete="off" class="bg-slate-700 p-2 rounded-lg text-slate-200" type="password" name="password"/>
+            </div>
+            <div class="flex justify-end ">
+                <input class="mt-2 cursor-pointer hover:bg-slate-800 duration-200 transition-colors bg-blue-700 rounded-md p-2" type="submit" value="Login"/>
+            </div>
+        </form>
+    </div>
+
+</div>
+{%endblock%}
