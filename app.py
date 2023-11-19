@@ -15,6 +15,7 @@ def after_request(response):
 def logout():
     session.pop('username')
     return redirect(url_for('login'))
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
@@ -66,7 +67,7 @@ def update(id=None):
         session['idno'] = id
         details = getrecord('student',idno=id)
         if len(details) <= 0:
-            flash('Invalid Student IDNO','danger')
+            flash('Invalid Student IDNO')
             return redirect(url_for('home'))
         details= details[0]
         return render_template('update.html',title='Update', details=details)
